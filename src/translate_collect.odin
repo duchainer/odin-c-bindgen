@@ -659,6 +659,7 @@ create_proc_type :: proc(param_childs: []clang.Cursor, ct: clang.Type, tcs: ^Tra
 
 	if len(param_childs) > 0 {
 		for child in param_childs {
+            // TODO Fix typo in ParamDecl
 			if child.kind != .ParmDecl {
 				continue
 			}
