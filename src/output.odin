@@ -543,7 +543,7 @@ output_procedure_signature :: proc(types: ^[dynamic]Type, tp: Type_Procedure, b:
 		}
 
         if param.side_comment != "" {
-            pf(b, "%v", param.side_comment)
+            pf(b, "%*s%v", param.explicit_whitespace_before_side_comment, "", param.side_comment)
         }
 	}
 
