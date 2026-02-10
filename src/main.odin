@@ -153,18 +153,15 @@ main :: proc() {
 			
 			log.infof("Collecting data from %v", input_filename)
 			collect_res, collect_ok := translate_collect(input_filename, config, types, decls)
-            fmt.println("%#v", collect_res)
 
 			if !collect_ok {
 				continue
 			}
 
 			translate_macros(collect_res.macros, decls)
-            fmt.println("post translate_macros: %v", collect_res.macros)
 
 			log.infof("Processing data from %v", input_filename)
 			process_res := translate_process(collect_res, config, types, decls)
-            fmt.println("post translate_process: %v", process_res)
 	
 			input_folder := filepath.dir(input_filename)
 			filename_stem := filepath.stem(input_filename)
