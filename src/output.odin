@@ -158,6 +158,7 @@ output :: proc(types: Type_List, decls: Decl_List, o: Output_Input, filename: st
 		longest_member_that_has_comment_on_right: int
 
 		for &od, i in g.decls {
+            fmt.println("od: %v", od)
 			d := od.decl
 			rhs := od.rhs
 

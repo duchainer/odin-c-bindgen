@@ -489,6 +489,9 @@ find_comment_at_line_end :: proc(str: string) -> (string, int) {
 	block_comment: bool
 
 	for c, i in str {
+        if c == '/'{
+            fmt.println("/?") 
+        }
 		if c == ' ' {
 			space_before_comment += 1
 		} else if c == '/' && i + 1 < len(str) && str[i + 1] == '/' {
