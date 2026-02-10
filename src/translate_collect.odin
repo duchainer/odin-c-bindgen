@@ -687,10 +687,27 @@ create_proc_type :: proc(param_childs: []clang.Cursor, ct: clang.Type, tcs: ^Tra
 					type_id = wrapper_idx
 				}
 			}
+            side_comment: string
+            side_comment_align_whitespace: int
 
+            {
+                source_range := clang.getCursorExtent(child)
+
+                start := clang.getRangeStart(source_range)
+                start_offset: u32
+                clang.getExpansionLocation(start, nil, nil, nil, &start_offset)
+                end := clang.getRangeEnd(source_range)
+                end_offset: u32
+                clang.getExpansionLocation(end, nil, nil, nil, &end_offset)
+                side_comment, side_comment_align_whitespace = find_comment_at_line_end(tcs.source[start_offset:])
+            }
+
+            // side_comment, side_comment_align_whitespace = find_comment_at_line_end(tcs.source[start_offset:])
 			append(&params, Type_Procedure_Parameter {
 				name = name,
 				type = type_id,
+                side_comment = side_comment,
+	            explicit_whitespace_before_side_comment = side_comment_align_whitespace,
 			})
 		}
 	} else {

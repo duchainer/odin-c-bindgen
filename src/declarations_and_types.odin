@@ -169,6 +169,8 @@ Type_Procedure_Parameter :: struct {
 	type: Definition,
 	default: string,
 	any_int: bool,
+	side_comment: string,
+	explicit_whitespace_before_side_comment: int,
 }
 
 Type_Procedure :: struct {

@@ -512,7 +512,7 @@ output_procedure_signature :: proc(types: ^[dynamic]Type, tp: Type_Procedure, b:
 
 	for param, idx in tp.parameters {
 		if idx != 0 {
-			p(b, ", ")
+			p(b, "\n\t, ")
 		}
 
 		_, by_ptr := resolve_type_definition(types, param.type, Type_Pointer_By_Ptr)
@@ -541,6 +541,10 @@ output_procedure_signature :: proc(types: ^[dynamic]Type, tp: Type_Procedure, b:
 		if param.default != "" {
 			pf(b, " = %v", param.default)
 		}
+
+        if param.side_comment != "" {
+            pf(b, "%v", param.side_comment)
+        }
 	}
 
 	if tp.is_variadic {
