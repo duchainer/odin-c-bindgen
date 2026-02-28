@@ -510,24 +510,6 @@ output_procedure_signature :: proc(types: ^[dynamic]Type, tp: Type_Procedure, b:
 		}
 	}
 
-    longest_name: int
-	for param in tp.parameters {
-        d := param.decl
-
-        if len(d.name) > longest_name {
-            longest_name = len(d.name)
-        }
-    }
-
-    longest_member_that_has_comment_on_right: int
-
-	for param in tp.parameters {
-        text := 
-		if param.side_comment != "" && len(param.side_comment) > longest_member_that_has_comment_on_right {
-			longest_member_that_has_comment_on_right = len(param.side_comment)
-		}
-    }
-
 	for param, idx in tp.parameters {
 		if idx != 0 {
 			p(b, "\n\t, ")
