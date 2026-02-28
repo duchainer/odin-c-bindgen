@@ -1,0 +1,33 @@
+#+title: Todo
+* TODO Fix single param per line without line comments
+#+begin_src odin
+	sqlite3_set_authorizer :: proc(_: ^sqlite3
+	, xAuth: proc "c" (rawptr
+	, i32
+	, cstring
+	, cstring
+	, cstring
+	, cstring) -> i32
+	, pUserData: rawptr) -> i32 ---
+#+end_src
+/
+* TODO Fix extra closing curly brace on each proc declarations
+* TODO Fix the styling
+** TODO Have the commas after each item instead of before each
+#+begin_src odin
+	sqlite3_prepare_v2 :: proc(db: ^sqlite3           /* Database handle */
+	, zSql: cstring      /* SQL statement, UTF-8 encoded */
+	, nByte: i32             /* Maximum length of zSql in bytes. */
+	, ppStmt: ^^sqlite3_stmt /* OUT: Statement handle */
+	, pzTail: ^cstring    /* OUT: Pointer to unused portion of zSql */) -> i32 ---
+}
+#+end_src
+** TODO Keep the indent correct too
+** TODO Have the first param on its own line, not on the `proc(` line
+** TODO Have the side_comments be printed with the same comment padding
+See previous attempt:
+https://github.com/karl-zylinski/odin-c-bindgen/commit/fc5ac98d2e8b8c78084b929e3363fec60a7c37bb
+*** Or have them aligned if that is easy enough to do.
+
+
+
